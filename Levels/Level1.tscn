@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://c2nqqfwp0r8k7"]
+
+[ext_resource type="PackedScene" uid="uid://drqquoux3bpes" path="res://Player/player.tscn" id="1_dl8mf"]
+[ext_resource type="PackedScene" uid="uid://bmgungsepyl7u" path="res://InteractableObjects/TestObject.tscn" id="2_xcayt"]
+[ext_resource type="PackedScene" uid="uid://xtabsybsr8kg" path="res://BuildingBlocks/coridor.tscn" id="3_5g41i"]
+[ext_resource type="PackedScene" uid="uid://dpx1dpq302jv" path="res://BuildingBlocks/open_room.tscn" id="4_7fl83"]
+[ext_resource type="PackedScene" uid="uid://b1u1f8mx2cjrp" path="res://BuildingBlocks/door.tscn" id="5_p5226"]
+[ext_resource type="Texture2D" uid="uid://t2ewsouylv8g" path="res://icon.svg" id="5_xcayt"]
+[ext_resource type="PackedScene" uid="uid://dhps8jsw3mbc7" path="res://BuildingBlocks/ladder2.tscn" id="6_tuji2"]
+[ext_resource type="Script" uid="uid://cck414sgoc1jo" path="res://InteractableObjects/puzzle_1.gd" id="7_7fl83"]
+[ext_resource type="PackedScene" uid="uid://k2an4qyki0om" path="res://BuildingBlocks/ladder4.tscn" id="7_f5cpa"]
+[ext_resource type="Script" uid="uid://jg7djsx7cw1e" path="res://InteractableObjects/sliding_ball.gd" id="8_p5226"]
+
+[sub_resource type="Environment" id="Environment_im851"]
+background_mode = 2
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcayt"]
+albedo_texture = ExtResource("5_xcayt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i80g2"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="Level1" type="Node3D" unique_id=304342019]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=889260422]
+environment = SubResource("Environment_im851")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1543267057]
+transform = Transform3D(1, 0, 0, 0, 0.6057728, 0.79563767, 0, -0.79563767, 0.6057728, 0, 10.542393, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=154175677]
+transform = Transform3D(1, 0, 0, 0, -0.5410072, 0.84101796, 0, -0.8410181, -0.54100716, 0, 10.542393, 0)
+
+[node name="Player" parent="." unique_id=1225727779 instance=ExtResource("1_dl8mf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.117679, 15.678254)
+
+[node name="TestObject" parent="." unique_id=2040784434 instance=ExtResource("2_xcayt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021044493, 0.6000037, -3.5360775)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=336230999]
+use_collision = true
+
+[node name="Coridor" parent="CSGCombiner3D" unique_id=1224488039 instance=ExtResource("3_5g41i")]
+
+[node name="Coridor3" parent="CSGCombiner3D" unique_id=1774979847 instance=ExtResource("3_5g41i")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.985441, 0, 17.450714)
+
+[node name="Coridor2" parent="CSGCombiner3D" unique_id=282722920 instance=ExtResource("3_5g41i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.93)
+
+[node name="OpenRoom" parent="CSGCombiner3D" unique_id=1220224708 instance=ExtResource("4_7fl83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.995178)
+material_override = SubResource("StandardMaterial3D_xcayt")
+
+[node name="Door" parent="CSGCombiner3D/OpenRoom" unique_id=210437109 instance=ExtResource("5_p5226")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, -9.796345)
+
+[node name="Door4" parent="CSGCombiner3D/OpenRoom" unique_id=763142090 instance=ExtResource("5_p5226")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, 9.984383)
+
+[node name="Door2" parent="CSGCombiner3D/OpenRoom" unique_id=2031766744 instance=ExtResource("5_p5226")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.759, 1.364, 0.5258217)
+
+[node name="Door3" parent="CSGCombiner3D/OpenRoom" unique_id=1050993041 instance=ExtResource("5_p5226")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.14, 1.364, 0.5258217)
+
+[node name="OpenRoom2" parent="CSGCombiner3D" unique_id=1897743083 instance=ExtResource("4_7fl83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.80945)
+
+[node name="Door5" parent="CSGCombiner3D/OpenRoom2" unique_id=1606746099 instance=ExtResource("5_p5226")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, -10.19492)
+
+[node name="Puzzle1" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2" unique_id=1088491147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.083518, 9.401768)
+size = Vector3(4, 3.5, 0.2)
+script = ExtResource("7_7fl83")
+balls = Array[NodePath]([NodePath("SlidingBallCenter"), NodePath("SlidingBallRight"), NodePath("SlidingBallLeft")])
+indicator = NodePath("Indicator")
+
+[node name="LineCenter" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=317220572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="LineRight" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=1021536079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="LineLeft" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=1822756894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="SlidingBallCenter" type="CSGSphere3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=314860341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15051806, -0.40176773)
+radius = 0.4
+script = ExtResource("8_p5226")
+puzzle_manager = NodePath("..")
+
+[node name="SlidingBallRight" type="CSGSphere3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=1681596408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.15051806, -0.40176773)
+radius = 0.4
+script = ExtResource("8_p5226")
+puzzle_manager = NodePath("..")
+
+[node name="SlidingBallLeft" type="CSGSphere3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=1437298085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.15051806, -0.40176773)
+radius = 0.4
+script = ExtResource("8_p5226")
+puzzle_manager = NodePath("..")
+
+[node name="Indicator" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=332193144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2423565, 0, 0.30884933)
+size = Vector3(0.4, 0.4, 0.05)
+
+[node name="ladder2" parent="CSGCombiner3D" unique_id=1074209380 instance=ExtResource("6_tuji2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.59, 0, 17.494064)
+
+[node name="ladder6" parent="CSGCombiner3D/ladder2" unique_id=17898487 instance=ExtResource("7_f5cpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8107605, 3, 0)
+
+[node name="ladder4" parent="CSGCombiner3D/ladder2" unique_id=1356099479 instance=ExtResource("7_f5cpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1900024, 0.6, 0)
+
+[node name="ladder5" parent="CSGCombiner3D/ladder2" unique_id=2107083432 instance=ExtResource("7_f5cpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5638046, 1.8, 0)
+
+[node name="ladder7" parent="CSGCombiner3D/ladder2" unique_id=1639264910 instance=ExtResource("7_f5cpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.184999, 4.2, 0)
+
+[node name="ladder8" parent="CSGCombiner3D/ladder2" unique_id=873821802 instance=ExtResource("7_f5cpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.588854, 5.39795, 0)
+
+[node name="ladder9" parent="CSGCombiner3D/ladder2" unique_id=1502999248 instance=ExtResource("7_f5cpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.962656, 6.59795, 0)
+
+[node name="ladder10" parent="CSGCombiner3D/ladder2" unique_id=57514461 instance=ExtResource("7_f5cpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.209612, 7.7979503, 0)
+
+[node name="ladder11" parent="CSGCombiner3D/ladder2" unique_id=259112152 instance=ExtResource("7_f5cpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.583853, 8.99795, 0)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=478994930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.7867588, -30.023859, 10.127524, 18.418276)
+polygon = PackedVector2Array(0.69379234, 0.22496319, -0.7327843, -0.100112915, 0.71113014, 0.27249432, 19.725323, -9.875995)
+material = SubResource("StandardMaterial3D_i80g2")

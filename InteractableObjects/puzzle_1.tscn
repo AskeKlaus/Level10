@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dhc87jfntp11h"]
+
+[ext_resource type="Script" uid="uid://cck414sgoc1jo" path="res://InteractableObjects/puzzle_1.gd" id="1_0h4sp"]
+[ext_resource type="Script" uid="uid://jg7djsx7cw1e" path="res://InteractableObjects/sliding_ball.gd" id="2_o1sj3"]
+[ext_resource type="Script" uid="uid://cy2f8nsij28ta" path="res://InteractableObjects/interactable.gd" id="3_o1sj3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xbtrt"]
+
+[node name="Puzzle1" type="CSGBox3D" unique_id=716532061]
+size = Vector3(4, 3.5, 0.2)
+script = ExtResource("1_0h4sp")
+balls = Array[NodePath]([NodePath("LineCenter/SlidingBallCenter"), NodePath("LineRight/SlidingBallRight"), NodePath("LineLeft/SlidingBallLeft")])
+
+[node name="LineCenter" type="CSGBox3D" parent="." unique_id=1533212650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="SlidingBallCenter" type="CSGSphere3D" parent="LineCenter" unique_id=1680152368]
+radius = 0.4
+script = ExtResource("2_o1sj3")
+puzzle_manager = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="LineCenter/SlidingBallCenter" unique_id=1914661895]
+script = ExtResource("3_o1sj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LineCenter/SlidingBallCenter/Area3D" unique_id=1289261053]
+transform = Transform3D(0.905, 0, 0, 0, 0.905, 0, 0, 0, 0.905, 0, 0, 0.06135416)
+shape = SubResource("SphereShape3D_xbtrt")
+
+[node name="LineRight" type="CSGBox3D" parent="." unique_id=161681409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="SlidingBallRight" type="CSGSphere3D" parent="LineRight" unique_id=972814493]
+radius = 0.4
+script = ExtResource("2_o1sj3")
+puzzle_manager = NodePath("../..")
+
+[node name="Area3D3" type="Area3D" parent="LineRight/SlidingBallRight" unique_id=1504364198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010053635, 0, 0)
+script = ExtResource("3_o1sj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LineRight/SlidingBallRight/Area3D3" unique_id=62268514]
+transform = Transform3D(0.905, 0, 0, 0, 0.905, 0, 0, 0, 0.905, 0, 0, 0.06135416)
+shape = SubResource("SphereShape3D_xbtrt")
+
+[node name="LineLeft" type="CSGBox3D" parent="." unique_id=1723390013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="SlidingBallLeft" type="CSGSphere3D" parent="LineLeft" unique_id=843430518]
+radius = 0.4
+script = ExtResource("2_o1sj3")
+puzzle_manager = NodePath("../..")
+
+[node name="Area3D2" type="Area3D" parent="LineLeft/SlidingBallLeft" unique_id=1752529159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036759377, 0, 0)
+script = ExtResource("3_o1sj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LineLeft/SlidingBallLeft/Area3D2" unique_id=2115977742]
+transform = Transform3D(0.905, 0, 0, 0, 0.905, 0, 0, 0, 0.905, 0, 0, 0.06135416)
+shape = SubResource("SphereShape3D_xbtrt")

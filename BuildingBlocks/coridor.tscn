@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://xtabsybsr8kg"]
+
+[node name="Corridor" type="CSGBox3D" unique_id=1224488039]
+size = Vector3(4, 0.2, 14)
+
+[node name="Ceiling" type="CSGBox3D" parent="." unique_id=793323418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+size = Vector3(4, 0.2, 14)
+
+[node name="WallLeft" type="CSGBox3D" parent="." unique_id=640077095]
+transform = Transform3D(0.6799558, 0, 0, 0, 1, 0, 0, 0, 1, -1.668, 2.1, 0.004)
+size = Vector3(1, 4, 13.983)
+
+[node name="WallRight" type="CSGBox3D" parent="." unique_id=870067970]
+transform = Transform3D(0.6799558, 0, 0, 0, 1, 0, 0, 0, 1, 1.656, 2.1, 0.014)
+size = Vector3(1, 4, 14.003)
