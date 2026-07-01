@@ -1,3 +1,10 @@
+Sprite3D
+Decal
+MeshInstance3D
+CollisionShape3D
+AnimatableBody3D
+StaticBody3D
+Area3D
 CSGBox3D
 CSGCombiner3D
 Node3D

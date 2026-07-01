@@ -4,25 +4,38 @@
 [ext_resource type="PackedScene" uid="uid://xtabsybsr8kg" path="res://BuildingBlockes/coridor.tscn" id="3_5g41i"]
 [ext_resource type="PackedScene" uid="uid://dpx1dpq302jv" path="res://BuildingBlockes/open_room.tscn" id="4_7fl83"]
 [ext_resource type="PackedScene" uid="uid://b1u1f8mx2cjrp" path="res://BuildingBlockes/door.tscn" id="5_p5226"]
-[ext_resource type="Texture2D" uid="uid://t2ewsouylv8g" path="res://icon.svg" id="5_xcayt"]
 [ext_resource type="PackedScene" uid="uid://dhps8jsw3mbc7" path="res://BuildingBlockes/ladder2.tscn" id="6_tuji2"]
 [ext_resource type="Script" uid="uid://cck414sgoc1jo" path="res://InteractableObjects/puzzle_1.gd" id="7_7fl83"]
 [ext_resource type="PackedScene" uid="uid://k2an4qyki0om" path="res://BuildingBlockes/ladder4.tscn" id="7_f5cpa"]
+[ext_resource type="Texture2D" uid="uid://b4o8k0xcm3sg3" path="res://Sprites&Textures/crack_4.tres" id="7_tuji2"]
+[ext_resource type="Texture2D" uid="uid://pdg0pct4nhcq" path="res://Sprites&Textures/crack_7.tres" id="8_104vp"]
+[ext_resource type="Texture2D" uid="uid://xcvjod4cxyl1" path="res://Sprites&Textures/crack_1.tres" id="8_f5cpa"]
 [ext_resource type="Script" uid="uid://jg7djsx7cw1e" path="res://InteractableObjects/sliding_ball.gd" id="8_p5226"]
+[ext_resource type="Texture2D" uid="uid://dlj7n8emmhl0q" path="res://Sprites&Textures/letters_8.tres" id="9_3momc"]
+[ext_resource type="Script" uid="uid://b72iwa270m5rh" path="res://Levels/dead_zone.gd" id="10_7fl83"]
+[ext_resource type="Texture2D" uid="uid://b3ycionvmm3k6" path="res://Sprites&Textures/letters_6.tres" id="10_sbm5j"]
+[ext_resource type="Texture2D" uid="uid://7mpbaojo4a44" path="res://Sprites&Textures/stain_8.tres" id="11_p2sgf"]
+[ext_resource type="Script" uid="uid://1p2it5e1cwvf" path="res://Levels/movingplatform.gd" id="12_f5cpa"]
 
 [sub_resource type="Environment" id="Environment_im851"]
 background_mode = 2
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcayt"]
-albedo_texture = ExtResource("5_xcayt")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i80g2"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ueh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_37lqu"]
+size = Vector3(200, 0.001, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n23ol"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xbtrt"]
+size = Vector3(1, 0.2, 1)
 
 [node name="Level1" type="Node3D" unique_id=304342019]
 
@@ -75,8 +88,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.93)
 
 [node name="OpenRoom" parent="Room1/CSGCombiner3D" unique_id=1220224708 instance=ExtResource("4_7fl83")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.995178)
-material_override = SubResource("StandardMaterial3D_xcayt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0022425652, 3.5762787e-07, 16.979212)
 
 [node name="Door" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=210437109 instance=ExtResource("5_p5226")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, -9.796345)
@@ -89,6 +101,30 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.75
 
 [node name="Door3" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=1050993041 instance=ExtResource("5_p5226")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.14, 1.400155, 0.5258217)
+
+[node name="Sprite3D" type="Sprite3D" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=2036952857]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -9.943182, 3.7472272, -2.4556293)
+texture = ExtResource("8_f5cpa")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=477435764]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.943182, 7.0991564, 1.7849197)
+texture = ExtResource("7_tuji2")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=1579450817]
+transform = Transform3D(-4.371139e-08, 0, 1, 0.54348534, 0.83941865, 2.3756499e-08, -0.83941865, 0.54348534, -3.6692153e-08, -9.943182, 4.664402, -1.6965523)
+texture = ExtResource("8_104vp")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=1357639264]
+transform = Transform3D(-1.3113417e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.3113417e-08, -9.943182, 1.1324903, 2.1850986)
+texture = ExtResource("9_3momc")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=716056615]
+transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, -9.943182, 1.9848353, -5.8224964)
+texture = ExtResource("10_sbm5j")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=916358222]
+transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, -9.943182, 1.9848353, 6.9757195)
+texture = ExtResource("11_p2sgf")
 
 [node name="ladder2" parent="Room1/CSGCombiner3D" unique_id=1074209380 instance=ExtResource("6_tuji2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.59, 0, 17.494064)
@@ -177,3 +213,22 @@ size = Vector3(1.9, 2.702, 1)
 transform = Transform3D(0.84201384, -0.022521958, 0.53898555, 0.24321035, 0.90767336, -0.34202012, -0.4815199, 0.4190725, 0.76975113, 0, 3.466444, 2.4951954)
 use_collision = true
 size = Vector3(1, 0.15, 1)
+
+[node name="DeadZone" type="Area3D" parent="." unique_id=1221493692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.1955, 0)
+script = ExtResource("10_7fl83")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeadZone" unique_id=1279228372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.352959, -0.49950027, 0)
+shape = SubResource("BoxShape3D_37lqu")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=794920292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1218, 18.296455, 17.565142)
+script = ExtResource("12_f5cpa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=256881563]
+shape = SubResource("BoxShape3D_n23ol")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D/CollisionShape3D" unique_id=1342743106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, 3)
+mesh = SubResource("BoxMesh_xbtrt")
