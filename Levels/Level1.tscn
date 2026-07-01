@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cck414sgoc1jo" path="res://InteractableObjects/puzzle_1.gd" id="7_7fl83"]
 [ext_resource type="PackedScene" uid="uid://k2an4qyki0om" path="res://BuildingBlockes/ladder4.tscn" id="7_f5cpa"]
 [ext_resource type="Script" uid="uid://jg7djsx7cw1e" path="res://InteractableObjects/sliding_ball.gd" id="8_p5226"]
+[ext_resource type="Texture2D" path="res://texturi naprimer/unknown_text.png" id="9_7fl83"]
 
 [sub_resource type="Environment" id="Environment_im851"]
 background_mode = 2
@@ -21,6 +22,9 @@ albedo_texture = ExtResource("5_xcayt")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i80g2"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5226"]
+albedo_texture = ExtResource("9_7fl83")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ueh"]
 
@@ -130,6 +134,7 @@ use_collision = true
 
 [node name="OpenRoom2" parent="Room2/CSGCombiner3D" unique_id=1897743083 instance=ExtResource("4_7fl83")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22462463)
+material_override = SubResource("StandardMaterial3D_p5226")
 
 [node name="Door5" parent="Room2/CSGCombiner3D/OpenRoom2" unique_id=1606746099 instance=ExtResource("5_p5226")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, -10.19492)
