@@ -38,12 +38,16 @@ func _on_puzzle_solved():
     # 2. Зажигаем панель (зелёный свет)
     var indicator_node = get_node(indicator)
     if indicator_node:
+        print("found")
         var mat = StandardMaterial3D.new()
         mat.albedo_color = Color.GREEN
         mat.emission_enabled = true
         mat.emission = Color.GREEN
         mat.emission_energy = 2.0
-        indicator_node.material_override = mat
+        indicator_node.material = mat
+        print("Материал применён")
+    else:
+        print("NOT found")
     
     # 3. Проигрываем звук (если есть)
     #if sound_success:

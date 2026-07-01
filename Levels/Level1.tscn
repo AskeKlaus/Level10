@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c2nqqfwp0r8k7"]
 
 [ext_resource type="PackedScene" uid="uid://drqquoux3bpes" path="res://Player/player.tscn" id="1_dl8mf"]
-[ext_resource type="PackedScene" uid="uid://bmgungsepyl7u" path="res://InteractableObjects/TestObject.tscn" id="2_xcayt"]
 [ext_resource type="PackedScene" uid="uid://xtabsybsr8kg" path="res://BuildingBlocks/coridor.tscn" id="3_5g41i"]
 [ext_resource type="PackedScene" uid="uid://dpx1dpq302jv" path="res://BuildingBlocks/open_room.tscn" id="4_7fl83"]
 [ext_resource type="PackedScene" uid="uid://b1u1f8mx2cjrp" path="res://BuildingBlocks/door.tscn" id="5_p5226"]
@@ -23,6 +22,8 @@ albedo_texture = ExtResource("5_xcayt")
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ueh"]
+
 [node name="Level1" type="Node3D" unique_id=304342019]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=889260422]
@@ -37,111 +38,142 @@ transform = Transform3D(1, 0, 0, 0, -0.5410072, 0.84101796, 0, -0.8410181, -0.54
 [node name="Player" parent="." unique_id=1225727779 instance=ExtResource("1_dl8mf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.117679, 15.678254)
 
-[node name="TestObject" parent="." unique_id=2040784434 instance=ExtResource("2_xcayt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021044493, 0.6000037, -3.5360775)
+[node name="SlidingBallCenter" type="CSGSphere3D" parent="." unique_id=786501862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005744219, 1.9329997, 59.809135)
+use_collision = true
+radius = 0.4
+script = ExtResource("8_p5226")
+puzzle_manager = NodePath("../Room2/Puzzle1")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=336230999]
+[node name="SlidingBallRight" type="CSGSphere3D" parent="." unique_id=681907732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4942558, 1.9329997, 59.809135)
+use_collision = true
+radius = 0.4
+script = ExtResource("8_p5226")
+puzzle_manager = NodePath("../Room2/Puzzle1")
+
+[node name="SlidingBallLeft" type="CSGSphere3D" parent="." unique_id=1168199524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5057442, 1.9329997, 59.809135)
+use_collision = true
+radius = 0.4
+script = ExtResource("8_p5226")
+puzzle_manager = NodePath("../Room2/Puzzle1")
+
+[node name="Room1" type="Node3D" parent="." unique_id=462016104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.257994)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room1" unique_id=336230999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.257994)
 use_collision = true
 
-[node name="Coridor" parent="CSGCombiner3D" unique_id=1224488039 instance=ExtResource("3_5g41i")]
+[node name="Coridor" parent="Room1/CSGCombiner3D" unique_id=1224488039 instance=ExtResource("3_5g41i")]
 
-[node name="Coridor3" parent="CSGCombiner3D" unique_id=1774979847 instance=ExtResource("3_5g41i")]
+[node name="Coridor3" parent="Room1/CSGCombiner3D" unique_id=1774979847 instance=ExtResource("3_5g41i")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16.985441, 0, 17.450714)
 
-[node name="Coridor2" parent="CSGCombiner3D" unique_id=282722920 instance=ExtResource("3_5g41i")]
+[node name="Coridor2" parent="Room1/CSGCombiner3D" unique_id=282722920 instance=ExtResource("3_5g41i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33.93)
 
-[node name="OpenRoom" parent="CSGCombiner3D" unique_id=1220224708 instance=ExtResource("4_7fl83")]
+[node name="OpenRoom" parent="Room1/CSGCombiner3D" unique_id=1220224708 instance=ExtResource("4_7fl83")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.995178)
 material_override = SubResource("StandardMaterial3D_xcayt")
 
-[node name="Door" parent="CSGCombiner3D/OpenRoom" unique_id=210437109 instance=ExtResource("5_p5226")]
+[node name="Door" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=210437109 instance=ExtResource("5_p5226")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, -9.796345)
 
-[node name="Door4" parent="CSGCombiner3D/OpenRoom" unique_id=763142090 instance=ExtResource("5_p5226")]
+[node name="Door4" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=763142090 instance=ExtResource("5_p5226")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, 9.984383)
 
-[node name="Door2" parent="CSGCombiner3D/OpenRoom" unique_id=2031766744 instance=ExtResource("5_p5226")]
+[node name="Door2" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=2031766744 instance=ExtResource("5_p5226")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.759, 1.364, 0.5258217)
 
-[node name="Door3" parent="CSGCombiner3D/OpenRoom" unique_id=1050993041 instance=ExtResource("5_p5226")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.14, 1.364, 0.5258217)
+[node name="Door3" parent="Room1/CSGCombiner3D/OpenRoom" unique_id=1050993041 instance=ExtResource("5_p5226")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.14, 1.400155, 0.5258217)
 
-[node name="OpenRoom2" parent="CSGCombiner3D" unique_id=1897743083 instance=ExtResource("4_7fl83")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.80945)
-
-[node name="Door5" parent="CSGCombiner3D/OpenRoom2" unique_id=1606746099 instance=ExtResource("5_p5226")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, -10.19492)
-
-[node name="Puzzle1" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2" unique_id=1088491147]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.083518, 9.401768)
-size = Vector3(4, 3.5, 0.2)
-script = ExtResource("7_7fl83")
-balls = Array[NodePath]([NodePath("SlidingBallCenter"), NodePath("SlidingBallRight"), NodePath("SlidingBallLeft")])
-indicator = NodePath("Indicator")
-
-[node name="LineCenter" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=317220572]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15051806, -0.40176773)
-size = Vector3(0.2, 3, 0.2)
-
-[node name="LineRight" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=1021536079]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.15051806, -0.40176773)
-size = Vector3(0.2, 3, 0.2)
-
-[node name="LineLeft" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=1822756894]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.15051806, -0.40176773)
-size = Vector3(0.2, 3, 0.2)
-
-[node name="SlidingBallCenter" type="CSGSphere3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=314860341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15051806, -0.40176773)
-radius = 0.4
-script = ExtResource("8_p5226")
-puzzle_manager = NodePath("..")
-
-[node name="SlidingBallRight" type="CSGSphere3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=1681596408]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.15051806, -0.40176773)
-radius = 0.4
-script = ExtResource("8_p5226")
-puzzle_manager = NodePath("..")
-
-[node name="SlidingBallLeft" type="CSGSphere3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=1437298085]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.15051806, -0.40176773)
-radius = 0.4
-script = ExtResource("8_p5226")
-puzzle_manager = NodePath("..")
-
-[node name="Indicator" type="CSGBox3D" parent="CSGCombiner3D/OpenRoom2/Puzzle1" unique_id=332193144]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2423565, 0, 0.30884933)
-size = Vector3(0.4, 0.4, 0.05)
-
-[node name="ladder2" parent="CSGCombiner3D" unique_id=1074209380 instance=ExtResource("6_tuji2")]
+[node name="ladder2" parent="Room1/CSGCombiner3D" unique_id=1074209380 instance=ExtResource("6_tuji2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.59, 0, 17.494064)
 
-[node name="ladder6" parent="CSGCombiner3D/ladder2" unique_id=17898487 instance=ExtResource("7_f5cpa")]
+[node name="ladder6" parent="Room1/CSGCombiner3D/ladder2" unique_id=17898487 instance=ExtResource("7_f5cpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8107605, 3, 0)
 
-[node name="ladder4" parent="CSGCombiner3D/ladder2" unique_id=1356099479 instance=ExtResource("7_f5cpa")]
+[node name="ladder4" parent="Room1/CSGCombiner3D/ladder2" unique_id=1356099479 instance=ExtResource("7_f5cpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1900024, 0.6, 0)
 
-[node name="ladder5" parent="CSGCombiner3D/ladder2" unique_id=2107083432 instance=ExtResource("7_f5cpa")]
+[node name="ladder5" parent="Room1/CSGCombiner3D/ladder2" unique_id=2107083432 instance=ExtResource("7_f5cpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5638046, 1.8, 0)
 
-[node name="ladder7" parent="CSGCombiner3D/ladder2" unique_id=1639264910 instance=ExtResource("7_f5cpa")]
+[node name="ladder7" parent="Room1/CSGCombiner3D/ladder2" unique_id=1639264910 instance=ExtResource("7_f5cpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.184999, 4.2, 0)
 
-[node name="ladder8" parent="CSGCombiner3D/ladder2" unique_id=873821802 instance=ExtResource("7_f5cpa")]
+[node name="ladder8" parent="Room1/CSGCombiner3D/ladder2" unique_id=873821802 instance=ExtResource("7_f5cpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.588854, 5.39795, 0)
 
-[node name="ladder9" parent="CSGCombiner3D/ladder2" unique_id=1502999248 instance=ExtResource("7_f5cpa")]
+[node name="ladder9" parent="Room1/CSGCombiner3D/ladder2" unique_id=1502999248 instance=ExtResource("7_f5cpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.962656, 6.59795, 0)
 
-[node name="ladder10" parent="CSGCombiner3D/ladder2" unique_id=57514461 instance=ExtResource("7_f5cpa")]
+[node name="ladder10" parent="Room1/CSGCombiner3D/ladder2" unique_id=57514461 instance=ExtResource("7_f5cpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.209612, 7.7979503, 0)
 
-[node name="ladder11" parent="CSGCombiner3D/ladder2" unique_id=259112152 instance=ExtResource("7_f5cpa")]
+[node name="ladder11" parent="Room1/CSGCombiner3D/ladder2" unique_id=259112152 instance=ExtResource("7_f5cpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.583853, 8.99795, 0)
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=478994930]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Room1/CSGCombiner3D" unique_id=478994930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.7867588, -30.023859, 10.127524, 18.418276)
-polygon = PackedVector2Array(0.69379234, 0.22496319, -0.7327843, -0.100112915, 0.71113014, 0.27249432, 19.725323, -9.875995)
+polygon = PackedVector2Array(0.69379234, 0.22496319, -0.7327843, -0.100112915, 0.71113014, 0.27249432, 19.835999, -9.921151)
 material = SubResource("StandardMaterial3D_i80g2")
+
+[node name="Room2" type="Node3D" parent="." unique_id=1166163988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 51.034073)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room2" unique_id=1873076884]
+use_collision = true
+
+[node name="OpenRoom2" parent="Room2/CSGCombiner3D" unique_id=1897743083 instance=ExtResource("4_7fl83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.22462463)
+
+[node name="Door5" parent="Room2/CSGCombiner3D/OpenRoom2" unique_id=1606746099 instance=ExtResource("5_p5226")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3644975, -10.19492)
+
+[node name="Puzzle1" type="CSGBox3D" parent="Room2" unique_id=679214907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005744219, 2.0835178, 9.17683)
+size = Vector3(4, 3.5, 0.2)
+script = ExtResource("7_7fl83")
+balls = Array[NodePath]([NodePath("../../SlidingBallCenter"), NodePath("../../SlidingBallRight"), NodePath("../../SlidingBallLeft")])
+indicator = NodePath("Indicator")
+
+[node name="LineCenter" type="CSGBox3D" parent="Room2/Puzzle1" unique_id=1786935972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="LineRight" type="CSGBox3D" parent="Room2/Puzzle1" unique_id=181997223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="LineLeft" type="CSGBox3D" parent="Room2/Puzzle1" unique_id=501109244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.15051806, -0.40176773)
+size = Vector3(0.2, 3, 0.2)
+
+[node name="Indicator" type="CSGBox3D" parent="Room2/Puzzle1" unique_id=2105216651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2423565, 0, 0.30884933)
+material_override = SubResource("StandardMaterial3D_01ueh")
+size = Vector3(0.4, 0.4, 0.05)
+
+[node name="Room4" type="Node3D" parent="." unique_id=1003439601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.090088, 10.5447235, 19.569592)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room4" unique_id=790078357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0934181, 0.5681534, -0.3711624)
+use_collision = true
+
+[node name="CSGBox3D" parent="Room4/CSGCombiner3D" unique_id=1172081112 instance=ExtResource("4_7fl83")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9223633, -1.0055828, -1.7445068)
+use_collision = true
+
+[node name="Door" parent="Room4/CSGCombiner3D/CSGBox3D" unique_id=443246317 instance=ExtResource("5_p5226")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.538, 1.4519997, 0.0020008087)
+size = Vector3(1.9, 2.702, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Room4" unique_id=82664241]
+transform = Transform3D(0.84201384, -0.022521958, 0.53898555, 0.24321035, 0.90767336, -0.34202012, -0.4815199, 0.4190725, 0.76975113, 0, 3.466444, 2.4951954)
+use_collision = true
+size = Vector3(1, 0.15, 1)

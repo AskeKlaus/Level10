@@ -48,13 +48,33 @@ func _update_interaction():
     query.collide_with_bodies = true
     
     var result = get_world_3d().direct_space_state.intersect_ray(query)
-    
+    var new_hit = null  # Временная переменная для нового объекта
+
     if result:
         var hit = result.collider
+        # Проверяем, есть ли у объекта метод interact()
         if hit.has_method("interact"):
-            interactable_hit = hit
-            print("Pointed at: ", hit.name)
+            new_hit = hit
 
+    # Если объект под прицелом изменился
+    if new_hit != interactable_hit:
+        # Если был старый объект — скрываем подсказку
+        if interactable_hit != null:
+            _show_interaction_prompt(false)
+        # Запоминаем новый объект
+        interactable_hit = new_hit
+        # Если новый объект есть — показываем подсказку
+        if interactable_hit != null:
+            _show_interaction_prompt(true)
+
+func _show_interaction_prompt(show: bool):
+    if show and interactable_hit:
+        print("Подсказка: Нажми E, чтобы взаимодействовать с ", interactable_hit.name)
+        # Здесь можно показать UI-элемент
+    else:
+        print("Подсказка скрыта")
+        # Здесь можно скрыть UI-элемент
+        
 func _process(delta):
     if Input.is_action_just_pressed("interact") and interactable_hit:
         interactable_hit.interact()
