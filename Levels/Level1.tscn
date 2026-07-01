@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://c2nqqfwp0r8k7"]
 
 [ext_resource type="PackedScene" uid="uid://drqquoux3bpes" path="res://Player/player.tscn" id="1_dl8mf"]
-[ext_resource type="PackedScene" uid="uid://xtabsybsr8kg" path="res://BuildingBlocks/coridor.tscn" id="3_5g41i"]
-[ext_resource type="PackedScene" uid="uid://dpx1dpq302jv" path="res://BuildingBlocks/open_room.tscn" id="4_7fl83"]
-[ext_resource type="PackedScene" uid="uid://b1u1f8mx2cjrp" path="res://BuildingBlocks/door.tscn" id="5_p5226"]
+[ext_resource type="PackedScene" uid="uid://xtabsybsr8kg" path="res://BuildingBlockes/coridor.tscn" id="3_5g41i"]
+[ext_resource type="PackedScene" uid="uid://dpx1dpq302jv" path="res://BuildingBlockes/open_room.tscn" id="4_7fl83"]
+[ext_resource type="PackedScene" uid="uid://b1u1f8mx2cjrp" path="res://BuildingBlockes/door.tscn" id="5_p5226"]
 [ext_resource type="Texture2D" uid="uid://t2ewsouylv8g" path="res://icon.svg" id="5_xcayt"]
-[ext_resource type="PackedScene" uid="uid://dhps8jsw3mbc7" path="res://BuildingBlocks/ladder2.tscn" id="6_tuji2"]
+[ext_resource type="PackedScene" uid="uid://dhps8jsw3mbc7" path="res://BuildingBlockes/ladder2.tscn" id="6_tuji2"]
 [ext_resource type="Script" uid="uid://cck414sgoc1jo" path="res://InteractableObjects/puzzle_1.gd" id="7_7fl83"]
-[ext_resource type="PackedScene" uid="uid://k2an4qyki0om" path="res://BuildingBlocks/ladder4.tscn" id="7_f5cpa"]
+[ext_resource type="PackedScene" uid="uid://k2an4qyki0om" path="res://BuildingBlockes/ladder4.tscn" id="7_f5cpa"]
 [ext_resource type="Script" uid="uid://jg7djsx7cw1e" path="res://InteractableObjects/sliding_ball.gd" id="8_p5226"]
 
 [sub_resource type="Environment" id="Environment_im851"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb0qlaykit4cv"]
 
-[ext_resource type="PackedScene" uid="uid://xtabsybsr8kg" path="res://BuildingBlocks/coridor.tscn" id="1_wcc2u"]
+[ext_resource type="PackedScene" uid="uid://xtabsybsr8kg" path="res://BuildingBlockes/coridor.tscn" id="1_wcc2u"]
 [ext_resource type="PackedScene" uid="uid://drqquoux3bpes" path="res://Player/player.tscn" id="2_nn734"]
 
 [node name="Level2" type="Node2D" unique_id=2001183363]
